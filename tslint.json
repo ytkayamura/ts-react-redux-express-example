@@ -1,0 +1,11 @@
+{
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "comment-format": {
+      "severity": "warning",
+      "options": ["check-space"]
+    },
+    "no-console": { "severity": "warning" },
+    "ter-indent": [true, 2]
+  }
+}

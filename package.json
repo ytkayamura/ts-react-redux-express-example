@@ -1,0 +1,29 @@
+{
+  "name": "typescript-express-sample",
+  "version": "1.0.0",
+  "description": "Sample express project with typescript.",
+  "scripts": {
+    "start": "yarn build:server && node server/server.bundle.js",
+    "build:server": "webpack --mode production --config webpack.server.config.js",
+    "build:dev:server": "webpack --mode development --watch --config webpack.server.config.js",
+    "start:dev:server": "nodemon server/server.bundle.js --watch server/server.bundle.js",
+    "lint": "tslint --project tsconfig.dev.json"
+  },
+  "author": "yayamura",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "express": "^4.16.3",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.4",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-loader": "^3.5.4"
+  }
+}
