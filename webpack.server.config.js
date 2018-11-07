@@ -18,7 +18,7 @@ module.exports = (env, argv) => {
             /node_modules/
           ],
           options: {
-            emitErrors: false
+            emitErrors: false,
           }
         } : {},
         {
