@@ -1,7 +1,7 @@
-# typescript-express-example
+# ts-react-redux-express-example
 
 ## Heroku App
-https://typescript-express-example.herokuapp.com
+https://ts-react-redux-express-example.herokuapp.com
 
 ## Install
 ```
@@ -16,6 +16,9 @@ $ yarn build:dev:server
 ```
 $ yarn start:dev:server
 ```
+```
+$ yarn start:dev
+```
 
 ## Build Production And Run
 ```
@@ -23,6 +26,7 @@ $ yarn start
 ```
 
 ## Reference Project
-https://github.com/IgnorantCoder/typescript-express-sample
+https://github.com/IgnorantCoder/typescript-express-sample  
+https://github.com/maechabin/typescript-react-demo  
+https://github.com/uryyyyyyy/react-redux-sample/tree/redux  
 Thanks!
-

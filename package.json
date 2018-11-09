@@ -1,10 +1,11 @@
 {
-  "name": "typescript-express-sample",
+  "name": "ts-react-redux-express-example",
   "version": "1.0.0",
-  "description": "Sample express project with typescript.",
+  "description": "React, Redux and Express project with TypeScript.",
   "scripts": {
-    "start": "yarn build:server && node server/server.bundle.js",
+    "start": "yarn build && yarn build:server && node server/server.bundle.js",
     "start:dev": "webpack-dev-server --mode development --content-base public/ --history-api-fallback",
+    "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build:server": "webpack --mode production --config webpack.server.config.js",
     "build:dev:server": "webpack --mode development --watch --config webpack.server.config.js",
