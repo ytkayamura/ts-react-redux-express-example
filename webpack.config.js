@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = (env, argv) => {
   const mode = argv.mode;
   return {
-    entry: './client/Hello.tsx',
+    entry: './client/index.tsx',
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'public')
@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
       rules: [
         {
           loader: 'ts-loader',
-          test: /\.tsx$/,
+          test: /\.(ts|tsx)$/,
           exclude: [
             /node_modules/,
           ],
