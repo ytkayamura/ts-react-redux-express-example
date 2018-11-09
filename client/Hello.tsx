@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { GlobalState } from './state';
 import { Act, ActionCreators as Acc } from './actions';
+import * as Axios from 'axios';
 
 interface Props {
   greeting: string;
@@ -11,29 +12,31 @@ interface State {
   text: string;
 }
 class Hello extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      text: '',
-    };
-    this.hello = this.hello.bind(this);
-    this.goodbye = this.goodbye.bind(this);
-    this.handleTextChange = this.handleTextChange.bind(this);
-  }
+  state = { text: '' };
 
-  hello(): void {
+  hello = (): void => {
     const { dispatch } = this.props;
     dispatch(Acc.hello());
   }
 
-  goodbye(e: React.FormEvent<HTMLFormElement>): void {
+  helloWorld = async (): Promise<any> => {
+    const { greeting, dispatch } = this.props;
+    try {
+      const res = await Axios.default.post('/api/hello', { greeting });
+      dispatch(Acc.helloWorld(res.data));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  goodbye = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const { dispatch } = this.props;
     this.setState({ ...this.state, text: '' });
     dispatch(Acc.goodbye(this.state.text));
   }
 
-  handleTextChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  handleTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ ...this.state, text: e.target.value });
   }
 
@@ -42,7 +45,8 @@ class Hello extends React.Component<Props, State> {
 
     return (
       <div>
-        <button type="button" onClick={this.hello}>Hello!</button><div/>
+        <button type="button" onClick={this.hello}>Hello!</button>
+        <button type="button" onClick={this.helloWorld}>Hello World!</button><div/>
         <form onSubmit={this.goodbye}>
           <input value={this.state.text} onChange={this.handleTextChange} />
           <button type="submit">Goodbye!</button>

@@ -12,6 +12,13 @@ export default function reducers(state: GlobalState = initialState, action: Act)
     return {
       message: `${state.message}!`,
     };
+  case ActionTypes.HELLO_WORLD:
+    {
+      const { greeting } = action.payload;
+      return {
+        message: greeting,
+      };
+    }
   case ActionTypes.GOODBYE:
     {
       const { name } = action.payload;

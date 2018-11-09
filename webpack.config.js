@@ -29,5 +29,11 @@ module.exports = (env, argv) => {
         },
       ],
     },
+
+    devServer: {
+      proxy: {
+        '/api': 'http://localhost:8081',
+      },
+    },
   };
 };

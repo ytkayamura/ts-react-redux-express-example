@@ -6,6 +6,10 @@ module.exports = (env, argv) => {
   return {
     entry: './server/server.ts',
     target: 'node',
+    node: {
+      __dirname: false,
+      __filename: false
+    },
     externals: [nodeExternals()],
     devtool: (mode === 'development') ? 'inline-source-map' : false,
     module: {
