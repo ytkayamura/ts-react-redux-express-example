@@ -2,7 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { GlobalState } from './state';
 import { Act, ActionCreators as Acc } from './actions';
-import * as Axios from 'axios';
+import { default as axios, AxiosResponse }  from 'axios';
+import * as ResIF from '../common/response-if';
 
 interface Props {
   greeting: string;
@@ -19,11 +20,11 @@ class Hello extends React.Component<Props, State> {
     dispatch(Acc.hello());
   }
 
-  helloWorld = async (): Promise<any> => {
+  helloWorld = async (): Promise<void> => {
     const { greeting, dispatch } = this.props;
     try {
-      const res = await Axios.default.post('/api/hello', { greeting });
-      dispatch(Acc.helloWorld(res.data));
+      const res: AxiosResponse<ResIF.HelloWorld> = await axios.post('/api/hello', { greeting });
+      dispatch(Acc.helloWorld(res.data.hello));
     } catch (err) {
       console.log(err);
     }
