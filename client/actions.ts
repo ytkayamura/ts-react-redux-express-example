@@ -1,13 +1,30 @@
 import { Action } from 'redux';
 
-// Action Types
+// Operator for Dentaku
+export enum Operator {
+  PLUS = '+',
+  MINUS = '-',
+  MULTYPLY = '*',
+  DIVIDE = '/',
+}
+
+/*
+ * Action Types
+ */
 export enum ActionTypes {
   HELLO = 'HELLO',
   HELLO_WORLD = 'HELLO_WORLD',
   GOODBYE = 'GOODBYE',
+  // Dentaku
+  INPUT_DIGIT = 'INPUT_DIGIT',
+  OPERATOR = 'OPERATOR',
+  EQUALS = 'EQUALS',
+  CLEAR = 'CLEAR',
 }
 
-// Action Interfaces
+/*
+ * Action Interfaces
+ */
 interface HelloAction extends Action {
   type: ActionTypes.HELLO;
 }
@@ -23,9 +40,31 @@ interface GoodbyeAction extends Action {
     name: string;
   };
 }
-export type Act = HelloAction | HelloWorldAction | GoodbyeAction;
+// Dentaku
+interface InputDigitAction extends Action {
+  type: ActionTypes.INPUT_DIGIT;
+  payload: {
+    digit: number;
+  };
+}
+interface OperatorAction extends Action {
+  type: ActionTypes.OPERATOR;
+  payload: {
+    operator: Operator;
+  };
+}
+interface EqualsAction extends Action {
+  type: ActionTypes.EQUALS;
+}
+interface ClearAction extends Action {
+  type: ActionTypes.CLEAR;
+}
+export type Act = HelloAction | HelloWorldAction | GoodbyeAction |
+  InputDigitAction | OperatorAction | EqualsAction | ClearAction;
 
-// Action Creators
+/*
+ * Action Creators
+ */
 export const ActionCreators = {
   hello: (): HelloAction => ({
     type: ActionTypes.HELLO,
@@ -39,5 +78,24 @@ export const ActionCreators = {
   goodbye: (name: string): GoodbyeAction => ({
     type: ActionTypes.GOODBYE,
     payload: { name },
+  }),
+
+  // Dentaku
+  inputDigit: (digit: number): InputDigitAction => ({
+    type: ActionTypes.INPUT_DIGIT,
+    payload: { digit },
+  }),
+
+  operator: (operator: Operator): OperatorAction => ({
+    type: ActionTypes.OPERATOR,
+    payload: { operator },
+  }),
+
+  equals: (): EqualsAction => ({
+    type: ActionTypes.EQUALS,
+  }),
+
+  clear: (): ClearAction => ({
+    type: ActionTypes.CLEAR,
   }),
 };

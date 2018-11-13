@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { GlobalState } from './state';
-import { Act, ActionCreators as Acc } from './actions';
 import { default as axios, AxiosResponse }  from 'axios';
+import { GlobalState } from './state';
+import Dentaku from './component/Dentaku';
+import { Act, ActionCreators as Acc } from './actions';
 import * as ResIF from '../common/response-if';
 
 interface Props {
@@ -53,6 +54,8 @@ class Hello extends React.Component<Props, State> {
           <button type="submit">Goodbye!</button>
         </form>
         <div>{greeting}</div>
+        <hr/>
+        <Dentaku />
       </div>
     );
   }
