@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { default as axios, AxiosResponse }  from 'axios';
-import { GlobalState } from './state';
-import Dentaku from './component/Dentaku';
-import { Act, ActionCreators as Acc } from './actions';
-import * as ResIF from '../common/response-if';
+import Dentaku from './Dentaku';
+import { GlobalState } from '../state';
+import { Act, ActionCreators as Acc } from '../actions';
+import * as ResIF from '../../common/response-if';
 
 interface Props {
   greeting: string;
